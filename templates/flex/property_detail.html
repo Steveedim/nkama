@@ -1,0 +1,37 @@
+{% extends 'flex/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ property.title }}</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Property Image -->
+            {% if property.image %}
+                <img src="{{ property.image.url }}" class="img-fluid mb-4" alt="{{ property.title }}">
+            {% else %}
+                <img src="https://via.placeholder.com/800x600" class="img-fluid mb-4" alt="No Image Available">
+            {% endif %}
+            <!-- Property Details -->
+            <p><strong>Description:</strong> {{ property.description }}</p>
+            <p><strong>Price:</strong> ${{ property.price }}</p>
+            <p><strong>Location:</strong> {{ property.location }}</p>
+            <p><strong>Bedrooms:</strong> {{ property.bedrooms }}</p>
+            <p><strong>Bathrooms:</strong> {{ property.bathrooms }}</p>
+            <p><strong>Square Feet:</strong> {{ property.square_feet }} sq. ft.</p>
+            <p><strong>Listed on:</strong> {{ property.listing_date|date:"M d, Y" }}</p>
+
+            <!-- Inquiry or Contact Form (Optional) -->
+            <a href="mailto:agent@example.com" class="btn btn-primary">Contact Agent</a>
+        </div>
+        <div class="col-md-4">
+            <!-- Sidebar with additional details -->
+            <h4>Agent Information</h4>
+            <p><strong>Agent:</strong> {{ property.agent.username }}</p>
+            <p><strong>Email:</strong> <a href="mailto:{{ property.agent.email }}">{{ property.agent.email }}</a></p>
+        </div>
+    </div>
+
+    <!-- Back to List -->
+    <a href="{% url 'property_list' %}" class="btn btn-secondary mt-4">Back to Property List</a>
+</div>
+{% endblock %}

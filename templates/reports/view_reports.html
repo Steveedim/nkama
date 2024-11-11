@@ -1,0 +1,14 @@
+{% extends flex/base.html %}
+
+<h1>Your Reports</h1>
+<ul>
+    {% for report in reports %}
+        <li>
+            <strong>{{ report.title }}</strong><br>
+            <p>{{ report.content }}</p>
+            <small>Created on: {{ report.created_at }}</small>
+        </li>
+    {% empty %}
+        <p>No reports to display.</p>
+    {% endfor %}
+</ul>

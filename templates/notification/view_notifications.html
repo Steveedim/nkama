@@ -1,0 +1,21 @@
+{% extends "flex/base.html" %}
+
+        {% block title %}View Notifications{% endblock title %}
+
+{% block content %}
+
+<h1>Your Notifications</h1>
+<ul>
+    {% for notification in notifications %}
+        <li>
+            <strong>From:</strong> {{ notification.sender.username }}<br>
+            <strong>Message:</strong> {{ notification.message }}<br>
+            <strong>Received at:</strong> {{ notifications.timestamp }}
+        </li>
+    {% empty %}
+        <p>No notifications to display.</p>
+    {% endfor %}
+
+    {% endblock content %}
+
+</ul>

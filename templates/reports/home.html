@@ -1,0 +1,23 @@
+{% extends "flex/base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports Dashboard</title>
+</head>
+<body>
+    <h1>Reports Dashboard</h1>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'reports_home' %}">Go to Reports Dashboard</a></li>
+            <li><a href="{% url 'flex:create_report' %}">Create a New Report</a></li>
+            <li><a href="{% url 'flex:view_reports' %}">View Your Reports</a></li>
+        </ul>
+    </nav>
+
+    <p>Welcome to the reports dashboard. From here, you can create a new report or view reports you’ve previously created.</p>
+</body>
+</html>

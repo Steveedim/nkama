@@ -1,0 +1,22 @@
+{% extends "flex/base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications Dashboard</title>
+</head>
+<body>
+    <h1>Notifications Dashboard</h1>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'flex:send_notification' %}">Send a New Notification</a></li>
+            <li><a href="{% url 'flex:view_notifications' %}">View Your Notifications</a></li>
+        </ul>
+    </nav>
+
+    <p>Welcome to the notifications dashboard. From here, you can send a new notification or view notifications you've received.</p>
+</body>
+</html>

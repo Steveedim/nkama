@@ -1,0 +1,26 @@
+{% extends 'flex/base.html' %}
+
+{% block title %}Property Listings{% endblock title %}
+
+{% block content %}
+      <h1>Properties Available</h1>
+      <div class="property-list">
+        {% for property in properties %}
+        <div class="property-item">
+          <h2>{{ property.item }}</h2>
+          <p>{{ property.description }}</p>
+          <p>price: ${{ property.price }}</p>
+          <p>Location: {{ property.location }}</p>
+          <p>Bedrooms: {{ property.bedrooms }}</p>
+          <p>Bathrooms: {{ property.bathrooms }}</p>
+          <p>Size: {{ property.sqft }}</p>
+
+      {% if property.image %}
+          <img src="{{ property.image.url }}" alt="{{ property.title }}" class="property-image">
+          {% else %}
+          <p>No image available</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% endblock content %}
+      </div>

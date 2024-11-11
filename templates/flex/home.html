@@ -1,0 +1,27 @@
+{% extends 'flex/base.html'  %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Horizon Real Estate Listings</h1>
+        <div class="row">
+            <!-- Property Card -->
+            {% for product in products %}
+
+            <div class="col-md-3 mb-4" id="property-card">
+                <div class="card">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="Property Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Beautiful Family Home</h5>
+                        <p class="card-text"><strong>Location:</strong> 123 Main St, City</p>
+                        <p class="card-text"><strong>Price:</strong>$500,000</p>
+                        <p class="card-text"><strong>Bedrooms:</strong> 4 <br> <strong>Bathrooms:</strong> 3</p>
+                        <a href="{% url 'flex:detail' product.id %}" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "flex/base.html" %}
+
+      {% block title %}Send Notifications{% endblock title %}
+
+    {% block content %}
+
+
+<h2>Send Notifications</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label for="receiver">Send to:</label>
+    <select name="receiver" id="receiver">
+        {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="message">Message:</label>
+    <textarea name="message" id="message" required></textarea>
+
+    <button type="submit">Send Notifications</button>
+</form>
+    {% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'flex/base.html' %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block content %}
+
+    <h1>Signup</h1>
+
+    <form action="" method="POST">
+      {% csrf_token %}
+
+        {{ form.as_p}}
+
+        <button type="submit" class="btn btn-success">Send</button>
+    </form>
+    <p><small>already have an account</small><a href="{% url 'flex:login' %}">Login</a></p>
+{% endblock content %}

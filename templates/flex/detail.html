@@ -1,0 +1,91 @@
+{% extends 'flex/base.html' %}
+
+    {% block title %}{{ product.name }} Detail{% endblock title %}
+
+    {% block content %}
+
+    <h1>{{ product.name }} - Detail Page</h1>
+
+    <div class="container mt-5">
+        <a href="{% url 'flex:home' %}" class="btn btn-outline-primary mb-4">Back to Listings</a>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="{{ product.image.url }}" class="img-fluid rounded mb-4" alt="Property Image">
+            </div>
+
+            <div class="col-md-4">
+                <h1>Beautiful Family Home</h1>
+                <p class="text-muted">123 Main St, City</p>
+                <h3>${{ product.price }}</h3>
+                <p><strong>Description:</strong> A beautiful home in a great neighborhood with all the modern amenities. Close to schools, shopping, and public transportation.</p>
+
+                <h4>Property Details:</h4>
+                <ul class="list-unstyled">
+                    <li>
+                        <strong>Bedrooms:</strong> 4 &nbsp
+                        <strong>Bathrooms:</strong> 3
+                    </li>
+                    <li><strong>Square Footage:</strong> 2,500 sq ft</li>
+                    <li><strong>Garage:</strong> Yes, 2-car garage</li>
+                    <li><strong>Built Year:</strong> 2015</li>
+                    <li><strong>Lot Size:</strong> 0.5 acres</li>
+                </ul>
+                {% if product.created_by == request.user %}
+                    <a href="{% url 'flex:edit-item' product.pk %}" class="btn btn-success">Edit</a>
+                    <a href="{% url 'flex:delete' product.pk %}" class="btn btn-danger">Delete</a>
+
+                {% else %}
+                    <a href="{% url 'conversation:new' product.id %}" class="btn btn-primary">Contact Seller</a>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="me-auto mb-5" style="width: 50%;">
+            <h4>Contact Agent</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="I am interested in this property"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block my-3">Send Message</button>
+                </form>
+        </div>
+
+        <br>
+        <hr>
+
+    <h1>Related Products</h1>
+
+    <div class="row">
+      {% if related_products %}
+        {% for product in related_products %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img src="{{ product.image.url }}" class="card-img-top" alt="..." height="250;" border="2px solid green;">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">${{ product.price }}</p>
+                <a href="{% url 'flex:detail' product.pk %}" class="btn btn-primary">View</a>
+
+              </div>
+            </div>
+        </div>
+
+        {% endfor %}
+      {% else %}
+        <p>There is no related products for this category</p>
+      {% endif %}
+    </div>
+
+
+{% endblock content %}
+

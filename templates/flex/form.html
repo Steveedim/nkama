@@ -1,0 +1,16 @@
+{% extends 'flex/base.html' %}
+
+{% block title%}Add Product{% endblock title%}
+
+{% block content %}
+
+<h1>Add new product </h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+       {{form.as_p}}
+
+        <button class="btn btn-outline-success" type="submit">Add Product</button>
+    </form>
+
+{% endblock content %}
